@@ -2,25 +2,29 @@
 
 module.exports = function(grunt) {
 
+  grunt.util._.mixin({
+    read: function(src) {
+      return grunt.file.readJSON(src);
+    }
+  });
 
   // Project configuration.
   grunt.initConfig({
+
+    i18n: grunt.file.readJSON('data/i18n.json'),
+
     assemble: {
       options: {
-        flatten: true,
-        prettify: {
-          indent: 2,
-          condense: true,
-          newlines: true
-        },
-        assets: '_demo/assets',
-        helpers: 'templates/helpers/*.js',
+        data: 'data/**/*.json',
         partials: 'templates/includes/*.hbs',
-        data: 'templates/data/**/*.json',
         layoutdir: 'templates/layouts',
         layout: 'default.hbs',
       },
       i18n: {
+        options: {
+          language: 'fr',
+          pages: '<%= i18n.languages %>'
+        },
         files: {'_demo/': ['*.hbs']},
       },
     },

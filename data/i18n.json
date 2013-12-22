@@ -1,0 +1,16 @@
+{
+  "languages": {
+    "en": {
+      "data": "<%= _.read('./data/i18n/en.json') %>",
+      "content": "Is english your language of choice?"
+    },
+    "es": {
+      "data": "<%= _.read('./data/i18n/es.json') %>",
+      "content": "¿Es español el idioma de su elección?"
+    },
+    "fr": {
+      "data": "<%= _.read('./data/i18n/fr.json') %>",
+      "content": "Est-français la langue de votre choix?"
+    }
+  }
+}

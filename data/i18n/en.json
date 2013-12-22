@@ -1,4 +1,5 @@
 {
-	"title": "Auto-generate i18n",
+  "lang": "en",
+	"title": "i18n - English",
 	"description": "This example demonstrates the creation of multiple pages based on one template and many i18n files"
 }
