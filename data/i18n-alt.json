@@ -1,17 +1,20 @@
 {
   "layout": "alt.hbs",
-  "languages": {
-    "en": {
+  "languages": [
+    {
+      "filename": "en",
       "data": "<%= _.read('./data/i18n/en.json') %>",
       "content": "Is english your language of choice?"
     },
-    "es": {
+    {
+      "filename": "es",
       "data": "<%= _.read('./data/i18n/es.json') %>",
       "content": "¿Es español el idioma de su elección?"
     },
-    "fr": {
+    {
+      "filename": "fr",
       "data": "<%= _.read('./data/i18n/fr.json') %>",
       "content": "Est-français la langue de votre choix?"
     }
-  }
+  ]
 }
