@@ -1,5 +1,8 @@
 'use strict';
 
+var _u = require('underscore');
+var path = require('path')
+
 module.exports = function(grunt) {
 
   grunt.util._.mixin({
@@ -23,10 +26,21 @@ module.exports = function(grunt) {
       },
       i18n: {
         options: {
-          language: 'en',
-          pages: '<%= i18n.languages %>'
+          pages: _u.each(
+            grunt.file.readJSON('data/i18n.json').languages,  function(lang, index, list){
+              _u.each(
+                grunt.file.expand('**.hbs').map(function(page){
+                  var ext = path.extname(page);
+                  return {filename: page.replace(ext, "-" + lang + ext), content: grunt.file.read(page), data: {language: lang}};
+                }), function(page){
+                  list.push(page);
+                }
+              );
+            }
+          )
         },
-        files: {'_demo/i18n/': ['*.hbs']},
+        dest: '_demo/i18n/',
+        src: '!*.*'
       },
       i18n_alt: {
         options: {
