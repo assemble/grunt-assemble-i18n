@@ -1,5 +1,6 @@
 node_modules
 *.sublime-*
+*.swp
 
 # Ignore the staging dir for docs
 
@@ -7,4 +8,3 @@ tmp
 vendor
 TODO.md
 *.rar
-
