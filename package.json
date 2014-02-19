@@ -18,9 +18,11 @@
   ],
   "main": "index.js",
   "devDependencies": {
-    "assemble": "~0.4.33",
+    "lodash": "~2.4.1",
+    "fs-utils": "~0.3.6",
     "grunt": "~0.4.2",
-    "grunt-contrib-clean": "~0.5.0"
+    "grunt-contrib-clean": "~0.5.0",
+    "assemble": "~0.4.35"
   },
   "keywords": [
     "assemble",

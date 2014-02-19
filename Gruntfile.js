@@ -1,10 +1,16 @@
 'use strict';
 
 module.exports = function(grunt) {
+  var pages = require('./lib/i18n');
+
+  var read = function(src) {
+    return grunt.file.readJSON(src);
+  };
 
   grunt.util._.mixin({
-    read: function(src) {
-      return grunt.file.readJSON(src);
+    read: read,
+    expand: function(src) {
+      return grunt.file.expand(src).map(read);
     }
   });
 
@@ -21,14 +27,22 @@ module.exports = function(grunt) {
         layoutdir: 'templates/layouts',
         layout: 'default.hbs',
       },
-      i18n: {
+      i18n_1: {
         options: {
-          language: 'en',
-          pages: '<%= i18n.languages %>'
+          pages: pages('data/i18n.json')
         },
-        files: {'_demo/i18n/': ['*.hbs']},
+        dest: '_demo/i18n/',
+        src: '!*.*'
       },
-      i18n_alt: {
+      i18n_2: {
+        options: {
+          // Second param for passing file patterns
+          pages: pages(['data/i18n.json'], {patterns: ['**.hbs']})
+        },
+        dest: '_demo/i18n/',
+        src: '!*.*'
+      },
+      i18n_3: {
         options: {
           language: 'fr',
           pages: '<%= i18n_alt.languages %>'
