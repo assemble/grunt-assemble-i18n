@@ -1,10 +1,18 @@
 'use strict';
 
-var _u = require('underscore');
-var path = require('path')
-
 module.exports = function(grunt) {
   var pages = require('./lib/i18n')(grunt);
+
+  var read = function(src) {
+    return grunt.file.readJSON(src);
+  };
+
+  grunt.util._.mixin({
+    read: read,
+    expand: function(src) {
+      return grunt.file.expand(src).map(read);
+    }
+  });
 
   // Project configuration.
   grunt.initConfig({

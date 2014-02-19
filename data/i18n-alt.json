@@ -3,17 +3,17 @@
   "languages": [
     {
       "filename": "en",
-      "data": "<%= _.read('./data/i18n/en.json') %>",
+      "data": "<%= _.expand('./data/i18n/en.json') %>",
       "content": "Is english your language of choice?"
     },
     {
       "filename": "es",
-      "data": "<%= _.read('./data/i18n/es.json') %>",
+      "data": "<%= _.expand('./data/i18n/es.json') %>",
       "content": "¿Es español el idioma de su elección?"
     },
     {
       "filename": "fr",
-      "data": "<%= _.read('./data/i18n/fr.json') %>",
+      "data": "<%= _.expand('./data/i18n/fr.json') %>",
       "content": "Est-français la langue de votre choix?"
     }
   ]
