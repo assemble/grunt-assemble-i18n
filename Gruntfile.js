@@ -32,8 +32,7 @@ module.exports = function(grunt) {
         options: {
           i18n: {
             data: 'data/i18n.json'
-          },
-          pages: ['index.hbs']
+          }
         },
         dest: '_demo/i18n/',
         src: '!*.*'
@@ -43,9 +42,7 @@ module.exports = function(grunt) {
           i18n: {
             data: ['data/i18n.json'],
             patterns: ['**.hbs']
-          },
-          // Second param for passing file patterns
-          pages: ['index.hbs']
+          }
         },
         dest: '_demo/i18n/',
         src: '!*.*'
