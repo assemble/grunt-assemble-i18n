@@ -23,7 +23,8 @@
     "grunt": "~0.4.2",
     "grunt-contrib-clean": "~0.5.0",
     "assemble": "~0.4.35",
-    "gray-matter": "~0.2.8"
+    "gray-matter": "~0.2.8",
+    "assemble-contrib-permalinks": "~0.3.4"
   },
   "keywords": [
     "assemble",

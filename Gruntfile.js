@@ -27,10 +27,14 @@ module.exports = function(grunt) {
         partials: 'templates/includes/*.hbs',
         layoutdir: 'templates/layouts',
         layout: 'default.hbs',
+        plugins: ['assemble-contrib-permalinks']
       },
       i18n_1: {
         options: {
-          pages: pages('data/i18n.json')
+          pages: pages('data/i18n.json'),
+          permalinks: {
+            structure: ':lang/index.html'
+          }
         },
         dest: '_demo/i18n/',
         src: '!*.*'
