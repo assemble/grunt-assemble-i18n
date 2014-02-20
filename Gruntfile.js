@@ -26,18 +26,26 @@ module.exports = function(grunt) {
         partials: 'templates/includes/*.hbs',
         layoutdir: 'templates/layouts',
         layout: 'default.hbs',
+        plugins: ['./index.js']
       },
       i18n_1: {
         options: {
-          pages: pages('data/i18n.json')
+          i18n: {
+            data: 'data/i18n.json'
+          },
+          pages: ['index.hbs']
         },
         dest: '_demo/i18n/',
         src: '!*.*'
       },
       i18n_2: {
         options: {
+          i18n: {
+            data: ['data/i18n.json'],
+            patterns: ['**.hbs']
+          },
           // Second param for passing file patterns
-          pages: pages(['data/i18n.json'], {patterns: ['**.hbs']})
+          pages: ['index.hbs']
         },
         dest: '_demo/i18n/',
         src: '!*.*'
