@@ -17,7 +17,6 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
 
-    i18n:     grunt.file.readJSON('data/i18n.json'),
     i18n_alt: grunt.file.readJSON('data/i18n-alt.json'),
 
     assemble: {
@@ -27,11 +26,13 @@ module.exports = function(grunt) {
         partials: 'templates/includes/*.hbs',
         layoutdir: 'templates/layouts',
         layout: 'default.hbs',
-        plugins: ['assemble-contrib-permalinks']
+        plugins: ['./index.js']
       },
       i18n_1: {
         options: {
-          pages: pages('data/i18n.json'),
+          i18n: {
+            data: 'data/i18n.json'
+          },
           permalinks: {
             structure: ':lang/index.html'
           }
@@ -42,8 +43,8 @@ module.exports = function(grunt) {
       i18n_2: {
         options: {
           i18n: {
-          pages: pages(['data/i18n.json'], {templates: ['templates/*.hbs']})
-            patterns: ['**.hbs']
+            data: ['data/i18n.json'],
+            templates: ['templates/*.hbs']
           }
         },
         dest: '_demo/i18n/',
