@@ -1,11 +1,12 @@
 ---
+lang: <%= language %>
 copyright: Copyright (c) 2014 Assemble, contributors. Released under the MIT license
-footnote: Your language is <%= language %>
+footnote: My language is set to <%= language %>
 ---
 <h1>{{i18n "title"}}</h1>
 <p>{{i18n "description"}}</p>
 <footer>
-  <small>Language: {{ language }}</small>
+  <small>{{ footnote }}</small>
   <p>{{ copyright }}</p>
   <p>{{ footnote }}</p>
 </footer>

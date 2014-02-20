@@ -17,37 +17,37 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
 
-    i18n:     grunt.file.readJSON('data/i18n.json'),
     i18n_alt: grunt.file.readJSON('data/i18n-alt.json'),
 
     assemble: {
       options: {
         data: 'data/**/*.json',
+        flatten: true,
         partials: 'templates/includes/*.hbs',
         layoutdir: 'templates/layouts',
         layout: 'default.hbs',
-        plugins: ['./index.js']
+        plugins: ['./index.js', 'assemble-contrib-permalinks']
       },
       i18n_1: {
         options: {
           i18n: {
             data: 'data/i18n.json'
           },
-          pages: ['index.hbs']
+          permalinks: {
+            structure: ':language/index.html'
+          }
         },
-        dest: '_demo/i18n/',
+        dest: '_demo/i18n-1/',
         src: '!*.*'
       },
       i18n_2: {
         options: {
           i18n: {
             data: ['data/i18n.json'],
-            patterns: ['**.hbs']
-          },
-          // Second param for passing file patterns
-          pages: ['index.hbs']
+            templates: ['templates/*.hbs']
+          }
         },
-        dest: '_demo/i18n/',
+        dest: '_demo/i18n-2/',
         src: '!*.*'
       },
       i18n_3: {
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
           language: 'fr',
           pages: '<%= i18n_alt.languages %>'
         },
-        files: {'_demo/i18n-alt/': ['*.hbs']},
+        files: {'_demo/i18n-alt/': ['templates/alt/*.hbs']},
       }
     },
     // Before creating new files, remove files from previous build.

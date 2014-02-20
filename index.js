@@ -26,21 +26,21 @@ module.exports = function (params, callback) {
   grunt.verbose.subhead('Running:'.bold, '"assemble-contrib-i18n"');
   grunt.verbose.writeln('Stage:  '.bold, '"' + params.stage + '"\n');
 
-  var opt = params.assemble.options.i18n;
-  grunt.verbose.writeln('Options'.bold, require('util').inspect(opt));
+  var opts = params.assemble.options.i18n;
+  grunt.verbose.writeln('Options: '.bold, require('util').inspect(opts));
 
-  if (opt) {
-    var data = opt.data;
-    var patterns = opt.patterns;
+  if (opts) {
+    var data = opts.data;
+    var templates = opts.templates;
 
     var pages = {};
-    if (patterns) {
-      patterns = { patterns: patterns };
-      pages = i18n(data, patterns);
+    if (templates) {
+      pages = i18n(data, { templates: templates });
     } else {
       pages = i18n(data);
     }
 
+    grunt.verbose.writeln('Pages: '.bold, require('util').inspect(pages));
     params.assemble.options.pages = pages; //_.extend({}, params.assemble.options.pages, pages);
 
   }
