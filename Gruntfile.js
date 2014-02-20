@@ -23,15 +23,17 @@ module.exports = function(grunt) {
     assemble: {
       options: {
         data: 'data/**/*.json',
+        flatten: true,
         partials: 'templates/includes/*.hbs',
         layoutdir: 'templates/layouts',
         layout: 'default.hbs',
-        plugins: ['./index.js']
+        plugins: ['assemble-contrib-permalinks']
       },
       i18n_1: {
         options: {
-          i18n: {
-            data: 'data/i18n.json'
+          pages: pages('data/i18n.json'),
+          permalinks: {
+            structure: ':lang/index.html'
           }
         },
         dest: '_demo/i18n/',
@@ -40,7 +42,7 @@ module.exports = function(grunt) {
       i18n_2: {
         options: {
           i18n: {
-            data: ['data/i18n.json'],
+          pages: pages(['data/i18n.json'], {templates: ['templates/*.hbs']})
             patterns: ['**.hbs']
           }
         },
@@ -52,7 +54,7 @@ module.exports = function(grunt) {
           language: 'fr',
           pages: '<%= i18n_alt.languages %>'
         },
-        files: {'_demo/i18n-alt/': ['*.hbs']},
+        files: {'_demo/i18n-alt/': ['templates/*.hbs']},
       }
     },
     // Before creating new files, remove files from previous build.
