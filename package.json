@@ -17,13 +17,15 @@
     }
   ],
   "main": "index.js",
-  "devDependencies": {
+  "dependencies": {
     "lodash": "~2.4.1",
     "fs-utils": "~0.3.6",
+    "gray-matter": "~0.2.8"
+  },
+  "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-clean": "~0.5.0",
     "assemble": "~0.4.35",
-    "gray-matter": "~0.2.8",
     "assemble-contrib-permalinks": "~0.3.4"
   },
   "keywords": [
