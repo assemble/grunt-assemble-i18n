@@ -25,11 +25,32 @@ module.exports = function(grunt) {
         flatten: true,
         partials: 'test/fixtures/templates/includes/*.hbs',
         layoutdir: 'test/fixtures/templates/layouts',
-        layout: 'default.hbs',
-        plugins: ['./index.js', 'assemble-contrib-permalinks']
+        layout: 'default.hbs'
       },
-      i18n_1: {
+
+      "without-plugin": {
         options: {
+          language: 'fr',
+          pages: '<%= i18n_alt.languages %>'
+        },
+        files: {'test/actual/without-plugin/': ['test/fixtures/templates/without-plugin/*.hbs']},
+      },
+
+      "with-plugin": {
+        options: {
+          plugins: ['./index.js'],
+          i18n: {
+            data: ['test/fixtures/data/i18n.json'],
+            templates: ['test/fixtures/templates/*.hbs']
+          }
+        },
+        dest: 'test/actual/with-plugin/',
+        src: '!*.*'
+      },
+
+      "with-permalinks": {
+        options: {
+          plugins: ['./index.js', 'assemble-contrib-permalinks'],
           i18n: {
             data: 'test/fixtures/data/i18n.json',
             templates: ['test/fixtures/templates/*.hbs']
@@ -38,26 +59,10 @@ module.exports = function(grunt) {
             structure: ':language/index.html'
           }
         },
-        dest: 'test/actual/i18n-1/',
+        dest: 'test/actual/with-permalinks/',
         src: '!*.*'
-      },
-      i18n_2: {
-        options: {
-          i18n: {
-            data: ['test/fixtures/data/i18n.json'],
-            templates: ['test/fixtures/templates/*.hbs']
-          }
-        },
-        dest: 'test/actual/i18n-2/',
-        src: '!*.*'
-      },
-      i18n_3: {
-        options: {
-          language: 'fr',
-          pages: '<%= i18n_alt.languages %>'
-        },
-        files: {'test/actual/i18n-alt/': ['test/fixtures/templates/alt/*.hbs']},
       }
+
     },
     // Before creating new files, remove files from previous build.
     clean: ['test/actual/**/*.html']
