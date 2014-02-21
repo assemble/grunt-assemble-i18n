@@ -17,37 +17,38 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
 
-    i18n_alt: grunt.file.readJSON('data/i18n-alt.json'),
+    i18n_alt: grunt.file.readJSON('test/fixtures/data/i18n-alt.json'),
 
     assemble: {
       options: {
-        data: 'data/**/*.json',
+        data: 'test/fixtures/data/**/*.json',
         flatten: true,
-        partials: 'templates/includes/*.hbs',
-        layoutdir: 'templates/layouts',
+        partials: 'test/fixtures/templates/includes/*.hbs',
+        layoutdir: 'test/fixtures/templates/layouts',
         layout: 'default.hbs',
         plugins: ['./index.js', 'assemble-contrib-permalinks']
       },
       i18n_1: {
         options: {
           i18n: {
-            data: 'data/i18n.json'
+            data: 'test/fixtures/data/i18n.json',
+            templates: ['test/fixtures/templates/*.hbs']
           },
           permalinks: {
             structure: ':language/index.html'
           }
         },
-        dest: '_demo/i18n-1/',
+        dest: 'test/actual/i18n-1/',
         src: '!*.*'
       },
       i18n_2: {
         options: {
           i18n: {
-            data: ['data/i18n.json'],
-            templates: ['templates/*.hbs']
+            data: ['test/fixtures/data/i18n.json'],
+            templates: ['test/fixtures/templates/*.hbs']
           }
         },
-        dest: '_demo/i18n-2/',
+        dest: 'test/actual/i18n-2/',
         src: '!*.*'
       },
       i18n_3: {
@@ -55,11 +56,11 @@ module.exports = function(grunt) {
           language: 'fr',
           pages: '<%= i18n_alt.languages %>'
         },
-        files: {'_demo/i18n-alt/': ['templates/alt/*.hbs']},
+        files: {'test/actual/i18n-alt/': ['test/fixtures/templates/alt/*.hbs']},
       }
     },
     // Before creating new files, remove files from previous build.
-    clean: ['_demo/**/*.html']
+    clean: ['test/actual/**/*.html']
 
   });
 
