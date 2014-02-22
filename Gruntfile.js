@@ -64,6 +64,19 @@ module.exports = function(grunt) {
       }
 
     },
+
+    /**
+     * Run mocha tests.
+     */
+    mochaTest: {
+      tests: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['test/**/*-test.js']
+      }
+    },
+
     // Before creating new files, remove files from previous build.
     clean: ['test/actual/**/*.html']
 
@@ -72,8 +85,11 @@ module.exports = function(grunt) {
   // Load npm plugins to provide necessary tasks.
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-mocha-test');
+
+  grunt.registerTask('test', ['mochaTest']);
 
   // Default task to be run.
-  grunt.registerTask('default', ['clean', 'assemble']);
+  grunt.registerTask('default', ['clean', 'assemble', 'test']);
 
 };
