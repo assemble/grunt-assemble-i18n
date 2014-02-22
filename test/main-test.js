@@ -60,6 +60,10 @@ describe('assemble-contrib-i18n', function() {
 
   describe('when no plugin is used', function() {
 
+    // this metadata shows there are some issues
+    // with the regular data or front-matter
+    // when adding pages through the pages collection
+    // on assemble options
     var metadata = [
       { filename: 'en.html', language: 'fr' },
       { filename: 'es.html', language: 'fr' },
