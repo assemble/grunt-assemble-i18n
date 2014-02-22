@@ -41,7 +41,7 @@ module.exports = function (params, callback) {
     }
 
     grunt.verbose.writeln('Pages: '.bold, require('util').inspect(pages));
-    params.assemble.options.pages = pages; //_.extend({}, params.assemble.options.pages, pages);
+    params.assemble.options.pages = _.extend({}, (params.assemble.options.pages || {}), pages);
 
   }
 

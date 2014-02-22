@@ -17,57 +17,79 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
 
-    i18n_alt: grunt.file.readJSON('data/i18n-alt.json'),
+    i18n_alt: grunt.file.readJSON('test/fixtures/data/i18n-alt.json'),
 
     assemble: {
       options: {
-        data: 'data/**/*.json',
+        data: 'test/fixtures/data/**/*.json',
         flatten: true,
-        partials: 'templates/includes/*.hbs',
-        layoutdir: 'templates/layouts',
-        layout: 'default.hbs',
-        plugins: ['./index.js', 'assemble-contrib-permalinks']
+        partials: 'test/fixtures/templates/includes/*.hbs',
+        layoutdir: 'test/fixtures/templates/layouts',
+        layout: 'default.hbs'
       },
-      i18n_1: {
+
+      "without-plugin": {
         options: {
+          language: 'fr',
+          pages: '<%= i18n_alt.languages %>'
+        },
+        files: {'test/actual/without-plugin/': ['test/fixtures/templates/without-plugin/*.hbs']},
+      },
+
+      "with-plugin": {
+        options: {
+          plugins: ['./index.js'],
           i18n: {
-            data: 'data/i18n.json'
+            data: ['test/fixtures/data/i18n.json'],
+            templates: ['test/fixtures/templates/*.hbs']
+          }
+        },
+        dest: 'test/actual/with-plugin/',
+        src: '!*.*'
+      },
+
+      "with-permalinks": {
+        options: {
+          plugins: ['./index.js', 'assemble-contrib-permalinks'],
+          i18n: {
+            data: 'test/fixtures/data/i18n.json',
+            templates: ['test/fixtures/templates/*.hbs']
           },
           permalinks: {
             structure: ':language/index.html'
           }
         },
-        dest: '_demo/i18n-1/',
+        dest: 'test/actual/with-permalinks/',
         src: '!*.*'
-      },
-      i18n_2: {
+      }
+
+    },
+
+    /**
+     * Run mocha tests.
+     */
+    mochaTest: {
+      tests: {
         options: {
-          i18n: {
-            data: ['data/i18n.json'],
-            templates: ['templates/*.hbs']
-          }
+          reporter: 'spec'
         },
-        dest: '_demo/i18n-2/',
-        src: '!*.*'
-      },
-      i18n_3: {
-        options: {
-          language: 'fr',
-          pages: '<%= i18n_alt.languages %>'
-        },
-        files: {'_demo/i18n-alt/': ['templates/alt/*.hbs']},
+        src: ['test/**/*-test.js']
       }
     },
+
     // Before creating new files, remove files from previous build.
-    clean: ['_demo/**/*.html']
+    clean: ['test/actual/**/*.html']
 
   });
 
   // Load npm plugins to provide necessary tasks.
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-mocha-test');
+
+  grunt.registerTask('test', ['mochaTest']);
 
   // Default task to be run.
-  grunt.registerTask('default', ['clean', 'assemble']);
+  grunt.registerTask('default', ['clean', 'assemble', 'test']);
 
 };
