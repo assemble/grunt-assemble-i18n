@@ -30,15 +30,20 @@ module.exports = function (params, callback) {
   grunt.verbose.writeln('Options: '.bold, require('util').inspect(opts));
 
   if (opts) {
+    var o = {};
     var data = opts.data;
     var templates = opts.templates;
+    var languages = opts.languages;
 
-    var pages = {};
     if (templates) {
-      pages = i18n(data, { templates: templates });
-    } else {
-      pages = i18n(data);
+      o.templates = templates;
     }
+
+    if (languages) {
+      o.languages = languages;
+    }
+
+    var pages = i18n(data, o);
 
     grunt.verbose.writeln('Pages: '.bold, require('util').inspect(pages));
     params.assemble.options.pages = _.extend({}, (params.assemble.options.pages || {}), pages);
