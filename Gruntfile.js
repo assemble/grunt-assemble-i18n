@@ -61,6 +61,18 @@ module.exports = function(grunt) {
         },
         dest: 'test/actual/with-permalinks/',
         src: '!*.*'
+      },
+
+      "with-list-of-languages": {
+        options: {
+          plugins: ['./index.js'],
+          i18n: {
+            languages: ["en", "fr", "es"],
+            templates: ['test/fixtures/templates/*.hbs']
+          }
+        },
+        dest: 'test/actual/with-list-of-languages/',
+        src: '!*.*'
       }
 
     },

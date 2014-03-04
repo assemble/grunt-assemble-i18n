@@ -124,5 +124,23 @@ describe('assemble-contrib-i18n', function() {
 
   });
 
+  describe('when i18n plugin is used with a list of languages', function() {
 
+    var metadata = [
+      { filename: 'index-en.html', language: 'en' },
+      { filename: 'index-es.html', language: 'es' },
+      { filename: 'index-fr.html', language: 'fr' }
+    ];
+
+    it('it should create three index-{lang}.html files', function() {
+      var expected = initFileList(metadata);
+      var actual = validateFileListExists(metadata, 'test/actual/with-plugin');
+      expect(actual).to.eql(expected);
+    });
+
+    it('it should contain a language attibute on the html tag', function () {
+      validateLanguageAttribute(metadata, 'test/actual/with-plugin');
+    });
+
+  });
 });
