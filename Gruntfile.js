@@ -103,6 +103,4 @@ module.exports = function(grunt) {
 
   // Default task to be run.
   grunt.registerTask('default', ['clean', 'assemble', 'test']);
-
-  grunt.registerTask('travis', ['test']);
 };
