@@ -17,7 +17,7 @@ var file = require('fs-utils');
 /**
  * Initilize an object of {filename: true}
  * pairs used for expect later
- * 
+ *
  * @param  {[Array]} files - List of base files
  * @return {[Object]}      - Object of {filename: true}
  */
@@ -31,7 +31,7 @@ var initFileList = function (files) {
 
 /**
  * Validate that each file in the list exists.
- * 
+ *
  * @param  {[Object]} files - List of base files
  * @param  {[String]} base  - Base path to look for filenames
  * @return {[Object]}       - Object of {filename: (true|false)}
@@ -52,6 +52,17 @@ var validateLanguageAttribute = function (files, base) {
     var $ = cheerio.load(contents);
     var actual = $('html[lang="' + f.language + '"]');
     expect(actual.length).to.eql(1);
+  };
+};
+
+var validateLodashYFMContent = function (files, base) {
+  for (var i = 0; i < files.length; i++) {
+    var f = files[i];
+    var filepath = path.join(base, f.filename);
+    var contents = file.readFileSync(filepath);
+    var $ = cheerio.load(contents);
+    var actual = $('#lodash-parsed');
+    expect(actual.contents().length).to.be.above(0);
   };
 };
 
@@ -98,8 +109,12 @@ describe('assemble-contrib-i18n', function() {
       expect(actual).to.eql(expected);
     });
 
-    it('it should contain a language attibute on the html tag', function () {
+    it('it should contain a language attribute on the html tag', function () {
       validateLanguageAttribute(metadata, 'test/actual/with-plugin');
+    });
+
+    it('with data it should contain a lodash parsed string', function() {
+      validateLodashYFMContent(metadata, 'test/actual/with-plugin');
     });
 
   });
