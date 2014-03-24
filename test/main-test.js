@@ -62,7 +62,8 @@ var validateLodashYFMContent = function (files, base) {
     var contents = file.readFileSync(filepath);
     var $ = cheerio.load(contents);
     var actual = $('#lodash-parsed');
-    expect(actual.contents().length).to.be.above(0);
+    var expected = $('title');
+    expect(actual.text()).to.eql(expected.text());
   };
 };
 
@@ -88,12 +89,11 @@ describe('assemble-contrib-i18n', function() {
       expect(actual).to.eql(expected);
     });
 
-    it('it should contain a language attibute on the html tag', function() {
+    it('it should contain a language attribute on the html tag', function() {
       validateLanguageAttribute(metadata, 'test/actual/without-plugin');
     });
 
   });
-
 
   describe('when i18n plugin is used', function() {
 
@@ -113,7 +113,7 @@ describe('assemble-contrib-i18n', function() {
       validateLanguageAttribute(metadata, 'test/actual/with-plugin');
     });
 
-    it('with data it should contain a lodash parsed string', function() {
+    it('with data it should contain language-specific lodash parsed string', function() {
       validateLodashYFMContent(metadata, 'test/actual/with-plugin');
     });
 
