@@ -1,0 +1,14 @@
+---
+lang: <%= language %>
+copyright: Copyright (c) 2014 Assemble, contributors. Released under the MIT license
+footnote: My language is set to <%= language %>
+lodash: <%= i18n[language].title %>
+---
+<h1>{{i18n "title"}}</h1>
+<p>{{i18n "description"}}</p>
+<p id='lodash-parsed'>{{lodash}}</p>
+<footer>
+  <small>{{ footnote }}</small>
+  <p>{{ copyright }}</p>
+  <p>{{ footnote }}</p>
+</footer>

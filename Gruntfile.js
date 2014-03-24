@@ -40,8 +40,8 @@ module.exports = function(grunt) {
         options: {
           plugins: ['./index.js'],
           i18n: {
-            data: ['test/fixtures/data/i18n.json'],
-            templates: ['test/fixtures/templates/*.hbs']
+            data: ['test/fixtures/data/i18n.json', 'test/fixtures/data/i18n/*.json'],
+            templates: ['test/fixtures/templates/with-plugin/*.hbs']
           }
         },
         dest: 'test/actual/with-plugin/',
