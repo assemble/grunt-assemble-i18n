@@ -11,4 +11,10 @@ lodash: <%= i18n[language].title %>
   <small>{{ footnote }}</small>
   <p>{{ copyright }}</p>
   <p>{{ footnote }}</p>
+  <p>Available languages:</p>
+  <ul>
+    {{#each i18n.languages}}
+    <li>{{this}}</li>
+    {{/each}}
+  </ul>
 </footer>
