@@ -5,6 +5,7 @@ node_modules
 # Ignore the staging dir for docs
 
 tmp
+docs
 vendor
 TODO.md
 *.rar
