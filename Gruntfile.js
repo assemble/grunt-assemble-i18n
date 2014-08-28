@@ -21,6 +21,7 @@ module.exports = function(grunt) {
 
     assemble: {
       options: {
+        plugins: ['./index.js'],
         data: 'test/fixtures/data/**/*.json',
         flatten: true,
         partials: 'test/fixtures/templates/includes/*.hbs',
@@ -38,7 +39,6 @@ module.exports = function(grunt) {
 
       "with-plugin": {
         options: {
-          plugins: ['./index.js'],
           i18n: {
             data: ['test/fixtures/data/i18n.json', 'test/fixtures/data/i18n/*.json'],
             templates: ['test/fixtures/templates/with-plugin/*.hbs']
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
 
       "with-permalinks": {
         options: {
-          plugins: ['./index.js', 'assemble-contrib-permalinks'],
+          plugins: ['index.js', 'assemble-contrib-permalinks'],
           i18n: {
             data: 'test/fixtures/data/i18n.json',
             templates: ['test/fixtures/templates/*.hbs']
@@ -65,7 +65,6 @@ module.exports = function(grunt) {
 
       "with-list-of-languages": {
         options: {
-          plugins: ['./index.js'],
           i18n: {
             languages: ["en", "fr", "es"],
             templates: ['test/fixtures/templates/*.hbs']
