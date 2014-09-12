@@ -22,9 +22,10 @@
   ],
   "main": "index.js",
   "dependencies": {
-    "lodash": "~2.4.1",
     "fs-utils": "~0.3.6",
-    "gray-matter": "~0.2.8"
+    "gray-matter": "~0.2.8",
+    "handlebars-helper-i18n": "^0.1.0",
+    "lodash": "~2.4.1"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
