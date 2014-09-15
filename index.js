@@ -8,7 +8,7 @@
 
 var _ = require('lodash');
 var i18n = require('./lib/i18n');
-var i18nHelper = require('./lib/helpers/helpers-i18n');
+var helper = require('handlbars-helper-i18n');
 
 var options = {
   stage: 'options:post:configuration'
@@ -28,7 +28,7 @@ module.exports = function (params, callback) {
   grunt.verbose.writeln('Stage:  '.bold, '"' + params.stage + '"\n');
 
   grunt.verbose.writeln('Loading the i18n helper');
-  params.assemble.engine.registerFunctions(i18nHelper);
+  params.assemble.engine.registerFunctions(helper.i18n);
 
   var opts = params.assemble.options.i18n;
   grunt.verbose.writeln('Options: '.bold, require('util').inspect(opts));
