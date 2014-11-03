@@ -8,7 +8,7 @@
 
 var _ = require('lodash');
 var i18n = require('./lib/i18n');
-var helper = require('handlbars-helper-i18n');
+var helper = require('handlebars-helper-i18n');
 
 var options = {
   stage: 'options:post:configuration'
