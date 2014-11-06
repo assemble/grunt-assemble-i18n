@@ -11,7 +11,7 @@ var i18n = require('./lib/i18n');
 var helper = require('handlebars-helper-i18n');
 
 var options = {
-  stage: 'options:post:configuration'
+  stage: 'assemble:post:data'
 };
 
 /**
@@ -35,9 +35,13 @@ module.exports = function (params, callback) {
 
   if (opts) {
     var o = {};
-    var data = opts.data;
+    var data = params.assemble.options.data;
     var templates = opts.templates;
     var languages = opts.languages;
+
+    if (opts.data) {
+       o.data = opts.data;
+    }
 
     if (templates) {
       o.templates = templates;
