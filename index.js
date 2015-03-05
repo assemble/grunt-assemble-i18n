@@ -43,6 +43,10 @@ module.exports = function (params, callback) {
        o.data = opts.data;
     }
 
+    if (params.assemble.files[0].cwd) {
+      o.cwd = params.assemble.files[0].cwd;
+    }
+
     if (templates) {
       o.templates = templates;
     }
