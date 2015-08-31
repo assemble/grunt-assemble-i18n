@@ -38,6 +38,7 @@ module.exports = function (params, callback) {
     var data = params.assemble.options.data;
     var templates = opts.templates;
     var languages = opts.languages;
+    var defaultLanguage = opts.defaultLanguage;
 
     if (opts.data) {
        o.data = opts.data;
@@ -49,6 +50,10 @@ module.exports = function (params, callback) {
 
     if (languages) {
       o.languages = languages;
+    }
+
+    if (defaultLanguage) {
+      o.defaultLanguage = defaultLanguage;
     }
 
     var pages = i18n(data, o);
