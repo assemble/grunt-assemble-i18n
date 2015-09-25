@@ -1,9 +1,8 @@
-/**
- * Assemble <http://assemble.io>
- * Created and maintained by Jon Schlinkert and Brian Woodward
+/*!
+ * grunt-assemble-i18n <https://github.com/assemble/grunt-assemble-i18n>
  *
- * Copyright (c) 2014 Upstage.
- * Licensed under the MIT License (MIT).
+ * Copyright (c) 2014-2015, Jon Schlinkert.
+ * Licensed under the MIT License.
  */
 
 var _ = require('lodash');
