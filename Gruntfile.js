@@ -50,7 +50,7 @@ module.exports = function(grunt) {
 
       "with-permalinks": {
         options: {
-          plugins: ['index.js', 'assemble-contrib-permalinks'],
+          plugins: ['index.js', 'grunt-assemble-permalinks'],
           i18n: {
             data: 'test/fixtures/data/i18n.json',
             templates: ['test/fixtures/templates/*.hbs']
