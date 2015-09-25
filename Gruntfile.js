@@ -94,7 +94,7 @@ module.exports = function(grunt) {
   });
 
   // Load npm plugins to provide necessary tasks.
-  grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-assemble');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-mocha-test');
 
