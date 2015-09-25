@@ -1,6 +1,6 @@
 {
   "name": "grunt-assemble-i18n",
-  "version": "0.1.6",
+  "version": "0.1.0",
   "description": "Plugin for adding i18n support to Assemble projects.",
   "homepage": "https://github.com/assemble/grunt-assemble-i18n",
   "repository": {
