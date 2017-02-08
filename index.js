@@ -48,6 +48,9 @@ module.exports = function (params, callback) {
     }
 
     if (languages) {
+      if (typeof languages == "string"){
+        languages = languages.split(",");
+      }
       o.languages = languages;
     }
 
